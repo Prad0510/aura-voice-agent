@@ -2,6 +2,10 @@ import { useRef, useState } from "react";
 import { GoogleGenAI, Modality } from "@google/genai";
 import "./App.css";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  "http://127.0.0.1:8000";
+
 function App() {
   const [status, setStatus] = useState("Ready");
   const [transcript, setTranscript] = useState([]);
@@ -143,7 +147,7 @@ function App() {
 
       // 1. Get ephemeral token from FastAPI
       const tokenResponse = await fetch(
-        "http://127.0.0.1:8000/api/live-token"
+        `${API_BASE_URL}/api/live-token`
       );
 
       const tokenData = await tokenResponse.json();
@@ -425,7 +429,7 @@ LANGUAGE CONSISTENCY:
 
                   try {
                     const response = await fetch(
-                      `http://127.0.0.1:8000/orders/${orderId}`
+                      `${API_BASE_URL}/orders/${orderId}`
                     );
 
                     const orderData =
@@ -632,7 +636,7 @@ if (serverContent.inputTranscription?.text) {
     });
 
     const response = await fetch(
-      "http://127.0.0.1:8000/api/summarize",
+      `${API_BASE_URL}/api/summarize`,
       {
         method: "POST",
         headers: {
