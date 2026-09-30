@@ -148,6 +148,15 @@ For a deployed frontend, the backend URL is provided through:
 ```env
 VITE_API_BASE_URL=http://127.0.0.1:8000
 ```
+## Why did I choose your particular architecture and technology stack?
+
+I chose React + Vite for the frontend and FastAPI for the backend because they are lightweight and work well for a project where the main focus is real-time interaction.
+
+Compared to building everything in a single application, keeping the frontend and backend separate made it easier to handle the browser-side voice interaction independently from the order logic and post-call processing. It also made deployment simpler, with the frontend hosted on Vercel and the backend on Render.
+
+For the AI, I chose Gemini Live API instead of a normal text-based chatbot API because the main requirement was a real-time voice conversation. Gemini also allowed me to use the same ecosystem for generating the structured call summary after the conversation.
+
+I used FastAPI instead of a heavier backend framework because the backend mainly needed a few API endpoints and a tool for order lookup. For the prototype, using a static order dataset instead of a database also made sense because only three sample orders were required. This kept the implementation simple and let me focus more on the voice experience, tool calling and guardrails.
 
 ## Hardest part
 
@@ -161,7 +170,7 @@ I also had to keep the voice conversation working while handling order lookups a
 
 Finally, I made sure Aria does not pretend to perform actions that the backend cannot actually perform. For example, if a customer asks to cancel an order, the agent can check the order status and explain whether cancellation is allowed, but it should not say that the order has been cancelled without an actual cancellation tool.
 
-## What I would improve with one more week
+## What I would improve with one more week?
 
 With more time, I would move the order data from the current static dataset to a proper database and add real backend tools for actions such as cancellation, refund requests and support-ticket creation.
 
