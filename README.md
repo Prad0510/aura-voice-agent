@@ -151,10 +151,6 @@ VITE_API_BASE_URL=http://127.0.0.1:8000
 
 ## Hardest part
 
-## Hardest part
-
-## Hardest part
-
 The hardest part was getting all the different parts of the voice agent to work together reliably.
 
 One issue I faced was in `App.jsx`, where the frontend was initially pointing to the local backend URL. This worked during local development but caused problems after deploying the frontend to Vercel because the deployed app could not access `127.0.0.1` on my computer. I fixed this by making the backend URL configurable through an environment variable and connecting the deployed frontend to the Render backend.
