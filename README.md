@@ -146,7 +146,7 @@ The frontend can then be opened in the browser.
 For a deployed frontend, the backend URL is provided through:
 
 ```env
-VITE_API_BASE_URL=https://your-backend-url
+VITE_API_BASE_URL=https:[//your-backend-url](http://127.0.0.1:8000)
 ```
 
 ## Hardest part
